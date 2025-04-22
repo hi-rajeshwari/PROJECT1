@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cha.css">
+    
+</head>
+<body>
+    <div class="row"></div>
+        <div class="col1">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">SignUp</a></li>
+            </ul>
+        </div>
+    <div class="col2">
+        <h1>REGISTRATION FORM</h1>
+    </div>
+    <div class="con">
+    <div class="row1">
+        <body>
+            <!-- <h1>REGISTRATION FORM</h1> -->
+            <form>
+                <div>
+                <label for="name" >NAME  : </label>
+                <input type="text" id="name" class="tf" required placeholder="Enter Name">
+            <div class="error"></div>
+            </div>
+                <br>
+            <div>
+                <label for="ph">PH NUM : </label>
+                <input type="number" id="ph" class="tf" required placeholder="Enter Number">
+                <div class="error"></div>
+            </div>
+                <br>
+            <div>
+                <label for="mail">EMAIL : </label>
+                <input type="email" id="mail" class="tf" required placeholder="Enter Email">
+                <div class="error"></div>
+            </div>
+                <br>
+            <div>
+                <label>GENDER: </label>
+                <input type="radio" id="car" name="gender" value="MALE"><label for="car">MALE</label>
+                <input type="radio" id="car2" name="gender" value="FEMALE"><label for="car2">FEMALE</label>
+                <input type="radio" id="car3" name="gender" value="OTHERS"><label for="car3">OTHERS</label>
+                <div class="error"></div>
+            </div>
+                <br>
+            <div>
+                <label>DEPARTMENT: </label>
+                <input type="checkbox" id="st" name="type" value="AI&DS"><label for="st">AI&DS</label>
+                <input type="checkbox" id="off" name="type" value="CSE"><label for="off">CSE</label>
+                <input type="checkbox" id="tr" name="type" value="IT"><label for="tr">IT</label>
+                <div class="error"></div>
+            </div>
+                <br>
+            <div>
+                <label>COLLEGE:</label>
+                <select id="drops">
+                    <option >select Here</option>
+                    <option value="GRT">GRT</option>
+                    <option value="IIT">IIT</option>
+                    <option value="VIT">VIT</option>
+
+                </select>
+                <div class="error"></div>
+                </div>
+                <br>
+            <div>
+                <button type="button" onclick="submitdata()" id="rrr">submit</button>
+                <!-- <input type="reset" id="sss"> -->
+                <input type="reset" id="sss" value="Reset">
+            </div>
+                <br><br>
+            </form>
+                <script>
+
+                    function submitdata(){
+                        let names = document.getElementById("name");
+                        console.log(names);
+                        console.log(names.value);
+                        let finalName1=names.value;
+                        let result1=document.getElementById("names");
+
+                        let ph1 = document.getElementById("ph");
+                        console.log(ph1);
+                        console.log(ph1.value);
+                        let finalName2=ph1.value;
+                        let result2=document.getElementById("nums");
+
+                        let email = document.getElementById("mail");
+                        console.log(email);
+                        console.log(email.value);
+                        let finalName3=email.value;
+                        let result3=document.getElementById("emails");
+
+
+
+                        let genderval=document.getElementsByName("gender");
+                        let res2=""
+                        for(let val of genderval){
+                            if(val.checked){
+                                res2=val.value;
+                            }
+                        }
+                        console.log(res2);
+                        // console.log(res2.value);
+                        let finalName4=res2;
+            
+                        let checks=document.getElementsByName("type");
+                        console.log(checks);
+                         
+                        let arr=[];
+                        for(let val of checks){
+                            if(val.checked){
+                                arr.push(val.value);
+                            }
+                        }
+                        console.log(arr);
+                        console.log(arr.join());
+                        let finalName5=arr;
+                        
+                        let select=document.getElementById("drops");
+                        console.log(select);
+                        console.log(select.value);
+                        let finaldropdown=select.value;
+
+                    console.log(finalName1);
+                    console.log(finalName2);
+                    console.log(finalName3);
+                    console.log(finalName4);
+                    console.log(finalName5);
+                    console.log(finaldropdown);
+
+                    
+                    if(finalName1===''){
+                        setError(names,"*Enter Your Name");
+                    }
+                    else{
+                        setSuccess(names);
+                    }
+                    
+                    if(finalName2===''){
+                        setError(ph1,"*Enter Your Number");
+                    }
+                    else{
+                        setSuccess(ph1);
+                    }
+                    if(finalName3===''){
+                        setError(email,"Enter Email ");
+                    }
+                    else{
+                        setSuccess(email);
+                    }
+
+
+
+                    if(finalName4===''){
+                        setError(genderval[0],"Click your Gender");
+                    }
+                    else{
+                        setSuccess(genderval[0]);
+                    }
+
+
+
+                    if(finalName5.length===0){
+                        setError(checks[0],"Please Check The Department");
+                    }
+                    else{
+                        setSuccess(checks[0]);
+                    }
+                    if (finaldropdown === 'select Here') {
+                    setError(select, "Please select a college");
+                    }
+                    else {
+                    setSuccess(select);
+                    }
+
+                    function setError(element,msg){
+                        let parents=element.parentElement;
+                        let resfinal=parents.querySelector(".error");
+                        resfinal.innerText=msg;
+                    }
+                    function setSuccess(element){
+                        let parents=element.parentElement;
+                        let resfinal=parents.querySelector(".error");
+                        resfinal.innerText='';
+                    }     
+                                                        
+                        
+                        
+                        
+                    }
+
+
+
+
+
+                </script>
+        
+        
+            <script>
+
+
+
+
+            </script>
+        </body>
+    </div>
+</div>
+</body>
+</html>
